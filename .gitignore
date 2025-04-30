@@ -1,0 +1,50 @@
+# LaTeX auxiliary and output files
+*.aux
+*.toc
+*.log
+*.nav
+*.out
+*.snm
+*.bbl
+*.blg
+*.brf
+*.synctex.gz
+*.run.xml
+*.lof
+*.lot
+*.fls
+*.bcf
+*.xdv
+*.fdb_latexmk
+*.pdfauto
+*.vrb
+
+# PDF output file (comment this line if you want to track the final PDF)
+/*.pdf
+
+# Editor backup and swap files
+*~
+.*.swp
+._*
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+
+# latexmk cache directory
+latexmk_cache/
+
+# Auto-generated directories for images or build outputs
+_auto/
+_images/
+figures/
+build/
+output/
+
+# Temporary files from editors like TeXstudio or Overleaf
+*.gz-*
+
+# Configuration or cache folders from specific LaTeX IDEs
+.texpadtmp/
