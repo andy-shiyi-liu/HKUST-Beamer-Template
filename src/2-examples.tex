@@ -1,0 +1,94 @@
+\section{Examples}
+
+\begin{frame}[fragile]{Document Class}
+
+	To begin with, just use \texttt{beamer} document class with \texttt{ust} theme. It should be noted that the \texttt{ust.sty} file should be included in the same directory as the \texttt{main.tex} file.
+	
+\begin{block}{Preamble about the document class}
+\begin{lstlisting}[language=TeX]
+\documentclass[10pt,aspectratio=169]{beamer}
+\usepackage{ust}
+\end{lstlisting}
+\end{block}
+	
+	You can change the \texttt{aspectratio} to \texttt{43} to adjust the slide aspect ratio to 4:3.
+\end{frame}
+
+\begin{frame}[fragile]{Metadata}
+	You can change the metadata displayed on the title slide:
+
+\begin{block}{Metadata}
+\begin{lstlisting}[language=TeX]
+\title{Your Title}
+\subtitle{Your Subtitle}
+\author{First Author, Second Author}
+\institute[ECE]{Department of Electronic and Computer Engineering}
+\date{Date}
+\end{lstlisting}
+\end{block}
+
+	Once settled, you can render the title slide with the command \verb|\maketitle| in the body.
+\end{frame}
+
+\begin{frame}[fragile]{Texts}{In a Sequence}
+
+	\begin{itemize}[<+->]
+		\item A typical slide has bulleted points.
+		\item These can be uncovered in sequence.
+		\item When rendered, they will be separated into multiple slides.
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Images}
+
+	Adding images works like in normal \LaTeX:
+	
+	\begin{figure}[hbt]
+		\includegraphics[width=0.5\textwidth]{assets/template/logo-name.pdf}
+ 		\caption{A sample of image}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}{Columns}
+	Splitting the page is easy and common.
+
+	Typically, one side has a picture and the other text:
+	
+	\vspace{20pt}
+	
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			This is the first column.\\[10pt]
+			You can have some texts here.
+		\end{column}
+		
+		\begin{column}{0.3\textwidth}
+			And this is the second one.\\[10pt]
+			You can have some pictures or tables here.
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}{Fonts}
+	
+	The priority when choosing a font is readability.
+	
+	Here, we give some advice:
+	\begin{itemize}
+		\item Use serif (default) fonts only with high-resolution projectors or monitors.
+		\item Use \textsf{sans-serif} fonts otherwise.
+		\item Use \textit{italic} or \textbf{bold} fonts to emphasize or highlight points.
+		\item We also provide an \alert{alert} font for emphasise.
+		\item Use \texttt{monospace} fonts to display codes.
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{References}
+
+	You can add references in the \texttt{.bib} file and use the \texttt{biblatex} package to cite them\cite{liuAndyshiyiliuHKUSTBeamerTemplate2025}.
+
+\end{frame}
