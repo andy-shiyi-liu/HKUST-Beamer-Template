@@ -1,94 +1,94 @@
-\section{Examples}
+\section{示例}
 
-\begin{frame}[fragile]{Document Class}
+\begin{frame}[fragile]{文档类}
 
-	To begin with, just use \texttt{beamer} document class with \texttt{ust} theme. It should be noted that the \texttt{ust.sty} file should be included in the same directory as the \texttt{main.tex} file.
+	首先，使用\texttt{beamer}文档类配合\texttt{ust}主题。需要注意的是，\texttt{ust.sty}文件应该与\texttt{main.tex}文件放在同一目录中。
 	
-\begin{block}{Preamble about the document class}
+\begin{block}{关于文档类的导言}
 \begin{lstlisting}[language=TeX]
 \documentclass[10pt,aspectratio=169]{beamer}
 \usepackage{ust}
 \end{lstlisting}
 \end{block}
 	
-	You can change the \texttt{aspectratio} to \texttt{43} to adjust the slide aspect ratio to 4:3.
+	您可以将\texttt{aspectratio}改为\texttt{43}来调整幻灯片的宽高比为4:3。
 \end{frame}
 
-\begin{frame}[fragile]{Metadata}
-	You can change the metadata displayed on the title slide:
+\begin{frame}[fragile]{元数据}
+	您可以更改标题页上显示的元数据：
 
-\begin{block}{Metadata}
+\begin{block}{元数据}
 \begin{lstlisting}[language=TeX]
-\title{Your Title}
-\subtitle{Your Subtitle}
-\author{First Author, Second Author}
-\institute[ECE]{Department of Electronic and Computer Engineering}
-\date{Date}
+\title{您的标题}
+\subtitle{您的副标题}
+\author{第一作者，第二作者}
+\institute[ECE]{电子与计算机工程学系}
+\date{日期}
 \end{lstlisting}
 \end{block}
 
-	Once settled, you can render the title slide with the command \verb|\maketitle| in the body.
+	设置完成后，您可以在文档正文中使用\verb|\maketitle|命令来生成标题页。
 \end{frame}
 
-\begin{frame}[fragile]{Texts}{In a Sequence}
+\begin{frame}[fragile]{文本}{按序列显示}
 
 	\begin{itemize}[<+->]
-		\item A typical slide has bulleted points.
-		\item These can be uncovered in sequence.
-		\item When rendered, they will be separated into multiple slides.
+		\item 典型的幻灯片都有项目符号。
+		\item 这些内容可以按顺序显示。
+		\item 渲染时，它们会被分成多张幻灯片。
 	\end{itemize}
 
 \end{frame}
 
-\begin{frame}{Images}
+\begin{frame}{图像}
 
-	Adding images works like in normal \LaTeX:
+	添加图像的方法与在普通\LaTeX 中相同：
 	
 	\begin{figure}[hbt]
 		\includegraphics[width=0.5\textwidth]{assets/template/logo-name.pdf}
- 		\caption{A sample of image}
+ 		\caption{图像示例}
 	\end{figure}
 	
 \end{frame}
 
-\begin{frame}{Columns}
-	Splitting the page is easy and common.
+\begin{frame}{分栏}
+	分割页面是一种简单而常见的做法。
 
-	Typically, one side has a picture and the other text:
+	通常，一边放图片，另一边放文字：
 	
 	\vspace{20pt}
 	
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
-			This is the first column.\\[10pt]
-			You can have some texts here.
+			这是第一栏。\\[10pt]
+			您可以在这里放一些文字。
 		\end{column}
 		
 		\begin{column}{0.3\textwidth}
-			And this is the second one.\\[10pt]
-			You can have some pictures or tables here.
+			这是第二栏。\\[10pt]
+			您可以在这里放一些图片或表格。
 		\end{column}
 	\end{columns}
 
 \end{frame}
 
-\begin{frame}{Fonts}
+\begin{frame}{字体}
 	
-	The priority when choosing a font is readability.
+	选择字体时的优先原则是可读性。
 	
-	Here, we give some advice:
+	这里我们给出一些建议：
 	\begin{itemize}
-		\item Use serif (default) fonts only with high-resolution projectors or monitors.
-		\item Use \textsf{sans-serif} fonts otherwise.
-		\item Use \textit{italic} or \textbf{bold} fonts to emphasize or highlight points.
-		\item We also provide an \alert{alert} font for emphasise.
-		\item Use \texttt{monospace} fonts to display codes.
+		\item 只有在高分辨率投影仪或显示器上才使用衬线字体（默认）。
+		\item 其他情况下使用\textsf{无衬线字体}。
+		\item 使用\textit{斜体}或\textbf{粗体}字体来强调或突出重点。
+		\item 我们还提供了用于强调的\alert{警示}字体。
+		\item 使用\texttt{等宽字体}来显示代码。
 	\end{itemize}
 
 \end{frame}
 
-\begin{frame}{References}
+\begin{frame}{参考文献}
 
-	You can add references in the \texttt{.bib} file and use the \texttt{biblatex} package to cite them\cite{liuAndyshiyiliuHKUSTBeamerTemplate2025}.
+	您可以在\texttt{.bib}文件中添加参考文献，并使用\texttt{biblatex}包来引用它们\cite{liuAndyshiyiliuHKUSTBeamerTemplate2025}。
 
 \end{frame}

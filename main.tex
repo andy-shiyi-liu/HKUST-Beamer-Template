@@ -1,14 +1,46 @@
+% !TEX program = xelatex
+% !TEX encoding = UTF-8 Unicode
+
 \documentclass[10pt,aspectratio=169]{beamer}
+
+% ================================================================================
+% 中文支持设置 (选择其中一种方案)
+% ================================================================================
+
+% 方案一：使用 ctex 包 (推荐，需要XeLaTeX或LuaLaTeX编译)
+\usepackage[UTF8,scheme=plain]{ctex}
+
+% 方案二：使用 xeCJK 包 (需要XeLaTeX编译)
+% \usepackage{xeCJK}
+% \setCJKmainfont{SimSun}  % 设置中文主字体
+% \setCJKsansfont{SimHei}  % 设置中文无衬线字体
+% \setCJKmonofont{FangSong} % 设置中文等宽字体
+
+% 方案三：使用 CJKutf8 包 (可用pdfLaTeX编译，但功能有限)
+% \usepackage{CJKutf8}
+
 \usepackage{ust}
+
+% ================================================================================
+% 字体设置优化
+% ================================================================================
+
+% 如果使用 xeCJK，可以更精细地设置字体
+% \setCJKfamilyfont{zhsong}{SimSun}
+% \setCJKfamilyfont{zhhei}{SimHei}
+% \setCJKfamilyfont{zhkai}{KaiTi}
+% \newcommand{\songti}{\CJKfamily{zhsong}}
+% \newcommand{\heiti}{\CJKfamily{zhhei}}
+% \newcommand{\kaishu}{\CJKfamily{zhkai}}
 
 % ================================================================================
 % Metadata
 % ================================================================================
 
-\title{HKUST Beamer Presentation Theme}
-\subtitle{Using \LaTeX\ to prepare slides}
-\author{Shiyi Liu}
-\institute[ECE]{Department of Electronic and Computer Engineering}
+\title{香港科技大学Beamer演示主题}
+\subtitle{使用 \LaTeX\ 制作中文幻灯片}
+\author{刘时宜}
+\institute[ECE]{电子与计算机工程学系}
 \date{\today}
 
 % ================================================================================
@@ -24,16 +56,29 @@
 % ================================================================================
 
 \begin{document}
+
+% 如果使用CJKutf8，需要在文档开始处添加
+% \begin{CJK*}{UTF8}{gbsn}
+
 \maketitle % generate the title slide
 
+% 示例中文内容
+\begin{frame}{欢迎使用中文Beamer}
+    \begin{itemize}
+        \item 这是一个支持中文的HKUST Beamer主题
+        \item 可以正常显示中文字符
+        \item 支持中英文混排：English and 中文
+    \end{itemize}
+\end{frame}
+
 \include{src/1-introduction}
-
 \include{src/2-examples}
-
 \include{src/3-summary}
 
 \backmatter
-
 \include{src/references}
+
+% 如果使用CJKutf8，需要在文档结束前添加
+% \end{CJK*}
 
 \end{document}
