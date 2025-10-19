@@ -12,137 +12,28 @@
 \date{\today}
 
 % ================================================================================
+% References
+% ================================================================================
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+\addbibresource{src/references.bib}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamertemplate{bibliography item}[text]
+
+% ================================================================================
 % Main Body
 % ================================================================================
 
 \begin{document}
 \maketitle % generate the title slide
 
-\section{Introduction}
+\include{src/1-introduction}
 
-\begin{frame}{Slide-Making in \LaTeX}
+\include{src/2-examples}
 
-	We assume that you can use \LaTeX. If not, you can refer to \href{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}{this page}.
+\include{src/3-summary}
 
-	\href{https://www.overleaf.com/learn/latex/Beamer}{Beamer} is one of the most popular and influential document classes for slide-making in \LaTeX. You can find its \href{https://mirror-hk.koddos.net/CTAN/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{full manual here}.
+\backmatter
 
-	Here, we will only introduce the basic functionalities so you can master them immediately.
-\end{frame}
+\include{src/references}
 
-
-\begin{frame}{Beamer vs. MS PowerPoint}
-
-	Compared to Microsoft PowerPoint, \LaTeX\ and Beamer provides these advantages:
-	
-	\begin{itemize}
-		\item Beamer produces a \texttt{.pdf} file with no problems on fonts, formulas, or program versions.
-		\item Math typesetting in \LaTeX\ is much easier, e.g.,
-			\begin{equation*}
-				\mathrm{i}\,\hslash\frac{\partial}{\partial t} \Psi(\mathbf{r},t) =
-				-\frac{\hslash^2}{2\,m}\nabla^2\Psi(\mathbf{r},t)
-				+ V(\mathbf{r})\Psi(\mathbf{r},t).
-			\end{equation*}
-	\end{itemize}
-\end{frame}
-
-\section{Examples}
-
-\begin{frame}[fragile]{Document Class}
-
-	To begin with, just use \texttt{beamer} document class with \texttt{ust} theme. It should be noted that the \texttt{ust.sty} file should be included in the same directory as the \texttt{main.tex} file.
-	
-\begin{block}{Preamble about the document class}
-\begin{lstlisting}[language=TeX]
-\documentclass[10pt,aspectratio=169]{beamer}
-\usepackage{ust}
-\end{lstlisting}
-\end{block}
-	
-	You can change the \texttt{aspectratio} to \texttt{43} to adjust the slide aspect ratio to 4:3.
-\end{frame}
-
-\begin{frame}[fragile]{Metadata}
-	You can change the metadata displayed on the title slide:
-
-\begin{block}{Metadata}
-\begin{lstlisting}[language=TeX]
-\title{Your Title}
-\subtitle{Your Subtitle}
-\author{First Author, Second Author}
-\institute[ECE]{Department of Electronic and Computer Engineering}
-\date{Date}
-\end{lstlisting}
-\end{block}
-
-	Once settled, you can render the title slide with the command \verb|\maketitle| in the body.
-\end{frame}
-
-\begin{frame}[fragile]{Texts}{In a Sequence}
-
-	\begin{itemize}[<+->]
-		\item A typical slide has bulleted points.
-		\item These can be uncovered in sequence.
-		\item When rendered, they will be separated into multiple slides.
-	\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Images}
-
-	Adding images works like in normal \LaTeX:
-	
-	\begin{figure}[hbt]
-		\includegraphics[width=0.5\textwidth]{assets/template/logo-name.pdf}
- 		\caption{A sample of image}
-	\end{figure}
-	
-\end{frame}
-
-\begin{frame}{Columns}
-	Splitting the page is easy and common.
-
-	Typically, one side has a picture and the other text:
-	
-	\vspace{20pt}
-	
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			This is the first column.\\[10pt]
-			You can have some texts here.
-		\end{column}
-		
-		\begin{column}{0.3\textwidth}
-			And this is the second one.\\[10pt]
-			You can have some pictures or tables here.
-		\end{column}
-	\end{columns}
-
-\end{frame}
-
-\begin{frame}{Fonts}
-	
-	The priority when choosing a font is readability.
-	
-	Here, we give some advice:
-	\begin{itemize}
-		\item Use serif (default) fonts only with high-resolution projectors or monitors.
-		\item Use \textsf{sans-serif} fonts otherwise.
-		\item Use \textit{italic} or \textbf{bold} fonts to emphasize or highlight points.
-		\item We also provide an \alert{alert} font for emphasise.
-		\item Use \texttt{monospace} fonts to display codes.
-	\end{itemize}
-
-\end{frame}
-
-\section{Summary}
-
-\begin{frame}{Good Luck!}
-	\begin{itemize}
-		\item Enough for an introduction! You should know enough by now.
-		\item If you have corrections or suggestions, please feel free to contact \href{mailto:shiyi.liu@connect.ust.hk}{me}!
-        \item You can also find this project on \href{https://github.com/andy-shiyi-liu/HKUST-Beamer-Template}{Github}! Stars are welcome!
-	\end{itemize}
-\end{frame}
-
-\backmatter % generate the final slide
 \end{document}

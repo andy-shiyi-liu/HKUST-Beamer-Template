@@ -18,6 +18,7 @@
 *.fdb_latexmk
 *.pdfauto
 *.vrb
+/*.bib
 
 # PDF output file (comment this line if you want to track the final PDF)
 /*.pdf
