@@ -229,11 +229,15 @@
 \AtBeginSection[]
 {
     \begingroup
+    {
+    \setbeamertemplate{background}{
+        \begin{picture}(0,0)
+            \put(0,-253){\includegraphics[width=\paperwidth]{assets/template/silhouette.jpg}}
+        \end{picture}
+    }
     \begin{frame}{Contents}{}
-    	\begin{picture}(0,0)
-    		\put(-30,-170){\includegraphics[width=1\paperwidth]{assets/template/silhouette.jpg}}
-    	\end{picture}
         \tableofcontents[currentsection]
     \end{frame}
+    }
     \endgroup
 }
