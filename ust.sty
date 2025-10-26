@@ -169,7 +169,7 @@
 	\end{picture}
 }
 
-% progress bar at the bottom
+% progress bar at the bottom with page number
 \defbeamertemplate{footline}{progress bar}{
 	\dimen0=\paperwidth
     \divide\dimen0 by \inserttotalframenumber
@@ -178,6 +178,15 @@
 	\leavevmode%
 	\ifnum\theframenumber=1
 	\else
+		% Page number in the bottom right corner
+		\hbox{%
+			\begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}
+				\usebeamerfont{footline}%
+				\hfill\textcolor{ustblue}{\insertframenumber/\inserttotalframenumber}
+				\vspace{1pt}
+			\end{beamercolorbox}%
+		}%
+		\vskip0pt%
 		\begin{beamercolorbox}[wd=\paperwidth,ht=2pt,dp=1pt]{progress bar}
 			\begin{beamercolorbox}[wd=\progressbarwidth,ht=2pt,dp=1pt]{progress bar progress}
 			\end{beamercolorbox}%
@@ -187,18 +196,6 @@
 
 \setbeamertemplate{footline}[progress bar]
 
-% % last frame
-% \newcommand{\backmatter}{
-% 	\begingroup
-% 	\setbeamertemplate{headline}{}
-% 	\setbeamertemplate{footline}{}
-% 	\begin{frame}[c]{}
-% 		\begin{picture}(0,0)
-% 			\put(-28.5,-25){\includegraphics[width=1.01\paperwidth]{assets/template/last-frame}}
-% 		\end{picture}
-% 	\end{frame}
-% \endgroup
-% }
 % last frame
 \newcommand{\backmatter}{
     \begingroup
