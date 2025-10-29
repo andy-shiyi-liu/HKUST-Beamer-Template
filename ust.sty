@@ -23,6 +23,7 @@
 \RequirePackage{threeparttable}
 \RequirePackage{makecell}
 \RequirePackage{multirow}
+\RequirePackage{booktabs}
 
 % Linux Libertine font
 \RequirePackage{libertine}
@@ -159,9 +160,11 @@
 	\ifnum\theframenumber=1
 		% not display the headline for the title page
 	\else
-		\begin{beamercolorbox}[wd=\paperwidth,ht=40pt]{head}
-			\hspace{360pt}\includegraphics[height=20pt]{assets/template/logo-white.pdf}
-			\vspace{10pt}
+		\begin{beamercolorbox}[wd=\paperwidth,ht=40pt,dp=0pt]{head}
+			\hspace{360pt}%
+			\raisebox{\dimexpr(40pt-20pt)/2\relax}[0pt][0pt]{%
+				\includegraphics[height=20pt]{assets/template/logo-white.pdf}%
+			}%
 		\end{beamercolorbox}
 	\fi
 }
@@ -176,6 +179,7 @@
 			\put(0,20){\usebeamerfont{framesubtitle}\usebeamercolor[fg]{title} \insertframesubtitle }
 		\fi
     \end{picture}
+    \vspace{-12pt} % Reduce space between frame title and content
 }
 
 % title page
