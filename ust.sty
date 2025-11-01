@@ -6,6 +6,7 @@
 
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
+\RequirePackage{etoolbox}  % For BeforeBeginEnvironment
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -157,6 +158,38 @@
 \lstset{style=mystyle}
 
 % ================================================================================
+% Appendix Support
+% ================================================================================
+
+% Counter to check if we're in appendix (0 = no, 1 = yes)
+\newcounter{inappendix}
+\setcounter{inappendix}{0}
+
+% Counter for appendix slides
+\newcounter{appendixframecount}
+\setcounter{appendixframecount}{0}
+
+% Command to store the main frame count (will be defined from aux file)
+\def\mainframetotal{0}
+
+% Redefine appendix command to write the current frame number to aux file
+\let\oldappendix\appendix
+\renewcommand{\appendix}{%
+    % Write the frame count just before appendix to aux file
+    \immediate\write\@auxout{\string\gdef\string\mainframetotal{\theframenumber}}%
+    \setcounter{inappendix}{1}%
+    \setcounter{appendixframecount}{0}%
+    \oldappendix%
+}
+
+% Hook to increment appendix counter at each frame in appendix
+\BeforeBeginEnvironment{frame}{%
+    \ifnum\value{inappendix}=1%
+        \stepcounter{appendixframecount}%
+    \fi%
+}
+
+% ================================================================================
 % Slide Templates
 % ================================================================================
 
@@ -218,26 +251,48 @@
 
 % progress bar at the bottom with page number
 \defbeamertemplate{footline}{progress bar}{
-	\dimen0=\paperwidth
-    \divide\dimen0 by \inserttotalframenumber
-	\multiply\dimen0 by \insertframenumber
-	\edef\progressbarwidth{\the\dimen0}
 	\leavevmode%
 	\ifnum\theframenumber=1
+		% No footline for title page
 	\else
-		% Page number in the bottom right corner
-		\hbox{%
-			\begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}
-				\usebeamerfont{footline}%
-				\hfill\textcolor{ustblue}{\insertframenumber/\inserttotalframenumber}
-				\vspace{1pt}
+		\ifnum\value{inappendix}=1
+			% Appendix footline: only page number as "App. N", no progress bar
+			\hbox{%
+				\begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}
+					\usebeamerfont{footline}%
+					\hfill\textcolor{ustblue}{App.~\theappendixframecount}
+					\vspace{1pt}
+				\end{beamercolorbox}%
+			}%
+		\else
+			% Main content footline: page number with fixed total and progress bar
+			% Use mainframetotal if it's been defined (from previous compilation)
+			% Otherwise use current total (will be fixed on second compilation)
+			\ifnum\mainframetotal>0
+				\def\totalmainframes{\mainframetotal}
+			\else
+				\def\totalmainframes{\inserttotalframenumber}
+			\fi
+			% Calculate progress bar width
+			\dimen0=\paperwidth
+			\divide\dimen0 by \totalmainframes
+			\multiply\dimen0 by \insertframenumber
+			\edef\progressbarwidth{\the\dimen0}
+			% Page number in the bottom right corner
+			\hbox{%
+				\begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{footline}
+					\usebeamerfont{footline}%
+					\hfill\textcolor{ustblue}{\insertframenumber/\totalmainframes}
+					\vspace{1pt}
+				\end{beamercolorbox}%
+			}%
+			\vskip0pt%
+			% Progress bar
+			\begin{beamercolorbox}[wd=\paperwidth,ht=2pt,dp=1pt]{progress bar}
+				\begin{beamercolorbox}[wd=\progressbarwidth,ht=2pt,dp=1pt]{progress bar progress}
+				\end{beamercolorbox}%
 			\end{beamercolorbox}%
-		}%
-		\vskip0pt%
-		\begin{beamercolorbox}[wd=\paperwidth,ht=2pt,dp=1pt]{progress bar}
-			\begin{beamercolorbox}[wd=\progressbarwidth,ht=2pt,dp=1pt]{progress bar progress}
-			\end{beamercolorbox}%
-		\end{beamercolorbox}%
+		\fi
 	\fi
 }
 
