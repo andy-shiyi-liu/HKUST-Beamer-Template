@@ -346,7 +346,16 @@
 % begin of subsections
 \AtBeginSubsection[]
 {
-    \begin{frame}{\insertsectionhead}{}
+	\begingroup
+    {
+    \setbeamertemplate{background}{
+        \begin{picture}(0,0)
+            \put(0,-262){\includegraphics[width=\paperwidth]{assets/template/silhouette.jpg}}
+        \end{picture}
+    }
+    \begin{frame}{Contents}{}
         \tableofcontents[currentsection,currentsubsection]
     \end{frame}
+	}
+    \endgroup
 }
