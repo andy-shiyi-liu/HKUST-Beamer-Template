@@ -321,7 +321,9 @@
 \setbeamertemplate{section in toc}{
 	$\blacktriangleright$~\textbf{\inserttocsection}
 }
-\setbeamertemplate{subsection in toc}{}
+\setbeamertemplate{subsection in toc}{
+	\hspace{1.5em}$\circ$~\inserttocsubsection\par
+}
 \setbeamertemplate{frametitle continuation}{}
 
 % begin of sections
@@ -339,4 +341,12 @@
     \end{frame}
     }
     \endgroup
+}
+
+% begin of subsections
+\AtBeginSubsection[]
+{
+    \begin{frame}{\insertsectionhead}{}
+        \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
 }
